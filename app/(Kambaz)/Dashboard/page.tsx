@@ -18,8 +18,90 @@ export default function Dashboard() {
             </div>
           </Link>
         </div>
-        <div className="wd-dashboard-course"> ... </div>
-        <div className="wd-dashboard-course"> ... </div>
+        {/* Course 2 */}
+        <div className="wd-dashboard-course">
+          <Link href="/Courses/2345" className="wd-dashboard-course-link">
+            <Image src="/images/nodejs.jpg" width={200} height={150} alt="Node.js" />
+            <div>
+              <h5>CS2345 Node.js</h5>
+              <p className="wd-dashboard-course-title">
+                Backend Development
+              </p>
+              <button>Go</button>
+            </div>
+          </Link>
+        </div>
+
+        {/* Course 3 */}
+        <div className="wd-dashboard-course">
+          <Link href="/Courses/3456" className="wd-dashboard-course-link">
+            <Image src="/images/mongodb.jpg" width={200} height={150} alt="MongoDB" />
+            <div>
+              <h5>CS3456 MongoDB</h5>
+              <p className="wd-dashboard-course-title">
+                NoSQL Database Systems
+              </p>
+              <button>Go</button>
+            </div>
+          </Link>
+        </div>
+
+        {/* Course 4 */}
+        <div className="wd-dashboard-course">
+          <Link href="/Courses/4567" className="wd-dashboard-course-link">
+            <Image src="/images/nextjs.jpg" width={200} height={150} alt="Next.js" />
+            <div>
+              <h5>CS4567 Next.js</h5>
+              <p className="wd-dashboard-course-title">
+                Server-Side Rendering
+              </p>
+              <button>Go</button>
+            </div>
+          </Link>
+        </div>
+
+        {/* Course 5 */}
+        <div className="wd-dashboard-course">
+          <Link href="/Courses/5678" className="wd-dashboard-course-link">
+            <Image src="/images/html.jpg" width={200} height={150} alt="HTML" />
+            <div>
+              <h5>CS5678 HTML & Web Basics</h5>
+              <p className="wd-dashboard-course-title">
+                Web Foundations
+              </p>
+              <button>Go</button>
+            </div>
+          </Link>
+        </div>
+
+        {/* Course 6 */}
+        <div className="wd-dashboard-course">
+          <Link href="/Courses/6789" className="wd-dashboard-course-link">
+            <Image src="/images/css.jpg" width={200} height={150} alt="CSS" />
+            <div>
+              <h5>CS6789 CSS & Styling</h5>
+              <p className="wd-dashboard-course-title">
+                Frontend Design
+              </p>
+              <button>Go</button>
+            </div>
+          </Link>
+        </div>
+
+        {/* Course 7 */}
+        <div className="wd-dashboard-course">
+          <Link href="/Courses/7890" className="wd-dashboard-course-link">
+            <Image src="/images/javascript.jpg" width={200} height={150} alt="JavaScript" />
+            <div>
+              <h5>CS7890 JavaScript</h5>
+              <p className="wd-dashboard-course-title">
+                Interactive Web Programming
+              </p>
+              <button>Go</button>
+            </div>
+          </Link>
+        </div>
+
       </div>
     </div>
 );}
