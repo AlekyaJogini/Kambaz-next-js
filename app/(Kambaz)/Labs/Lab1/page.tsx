@@ -2,6 +2,9 @@
   return (
     <div id="wd-lab1">
       <h2>Lab 1</h2>
+      <h2>Alekya Jogini Section: 05 | CRN: 19730 | Online</h2>
+
+
       <h3>HTML Examples</h3>
       <div id="wd-h-tag">
         <h4>Heading Tags</h4>
