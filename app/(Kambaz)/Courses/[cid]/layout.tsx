@@ -11,9 +11,8 @@ export default async function Layout({
   const { cid } = await params;
   
   return (
-    <div>
-      {/* You can use cid here if needed */}
+    
       {children}
-    </div>
+    
   );
 }
