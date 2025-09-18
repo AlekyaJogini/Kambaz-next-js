@@ -16,7 +16,7 @@ export default function Assignments() {
       </h3>
       <ul id="wd-assignment-list">
         <li className="wd-assignment-list-item">
-          <Link href="/Courses/1234/Assignments/123" className="wd-assignment-link">
+          <Link href="/Courses/1234/Assignments/123/" className="wd-assignment-link">
             <strong>A1 - ENV + HTML</strong>
           </Link>
           <div className="wd-assignment-details">
