@@ -1,10 +1,16 @@
 import { ReactNode } from "react";
 import CourseNavigation from "./Navigation";
 
-export default function CoursesLayout(
-  { children, params }: { children: ReactNode; params: { cid: string } }
-) {
-  const { cid } = params;
+// Define the type for LayoutProps
+type LayoutProps = {
+  children: ReactNode;
+  params: {
+    cid: string;
+  };
+};
+
+export default function CoursesLayout({ children, params }: LayoutProps) {
+  const { cid } = params; // Extract cid from params
   return (
     <div id="wd-courses">
       <h2>Courses {cid}</h2>
