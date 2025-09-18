@@ -16,33 +16,33 @@ export default function Assignments() {
       </h3>
       <ul id="wd-assignment-list">
         <li className="wd-assignment-list-item">
-          <a href="/Courses/1234/Assignments/123" className="wd-assignment-link">
+          <Link href="/Courses/1234/Assignments/123" className="wd-assignment-link">
             <strong>A1 - ENV + HTML</strong>
-          </a>
+          </Link>
           <div className="wd-assignment-details">
             Due May 13 at 11:59pm | 100 pts | Not Submitted
           </div>
         </li>
         <li className="wd-assignment-list-item">
-          <a href="/Courses/1234/Assignments/124" className="wd-assignment-link">
+          <Link href="/Courses/1234/Assignments/124" className="wd-assignment-link">
             <strong>A2 - CSS + BOOTSTRAP</strong>
-          </a>
+          </Link>
           <div className="wd-assignment-details">
             Due May 20 at 11:59pm | 100 pts | Not Submitted
           </div>
         </li>
         <li className="wd-assignment-list-item">
-          <a href="/Courses/1234/Assignments/125" className="wd-assignment-link">
+          <Link href="/Courses/1234/Assignments/125" className="wd-assignment-link">
             <strong>A3 - JAVASCRIPT</strong>
-          </a>
+          </Link>
           <div className="wd-assignment-details">
             Due May 27 at 11:59pm | 100 pts | Not Submitted
           </div>
         </li>
         <li className="wd-assignment-list-item">
-          <a href="/Courses/1234/Assignments/126" className="wd-assignment-link">
+          <Link href="/Courses/1234/Assignments/126" className="wd-assignment-link">
             <strong>A4 - REACT + STATE</strong>
-          </a>
+          </Link>
           <div className="wd-assignment-details">
             Due Jun 3 at 11:59pm | 100 pts | Not Submitted
           </div>
@@ -55,17 +55,17 @@ export default function Assignments() {
       </h3>
       <ul id="wd-quiz-list">
         <li className="wd-assignment-list-item">
-          <a href="/Courses/1234/Assignments/201" className="wd-assignment-link">
+          <Link href="/Courses/1234/Assignments/201" className="wd-assignment-link">
             <strong>Q1 - HTML Basics</strong>
-          </a>
+          </Link>
           <div className="wd-assignment-details">
             Due Jun 5 at 11:59pm | 20 pts | Not Submitted
           </div>
         </li>
         <li className="wd-assignment-list-item">
-          <a href="/Courses/1234/Assignments/202" className="wd-assignment-link">
+          <Link href="/Courses/1234/Assignments/202" className="wd-assignment-link">
             <strong>Q2 - CSS Basics</strong>
-          </a>
+          </Link>
           <div className="wd-assignment-details">
             Due Jun 12 at 11:59pm | 20 pts | Not Submitted
           </div>
@@ -78,17 +78,17 @@ export default function Assignments() {
       </h3>
       <ul id="wd-exam-list">
         <li className="wd-assignment-list-item">
-          <a href="/Courses/1234/Assignments/301" className="wd-assignment-link">
+          <Link href="/Courses/1234/Assignments/301" className="wd-assignment-link">
             <strong>Midterm Exam</strong>
-          </a>
+          </Link>
           <div className="wd-assignment-details">
             Due Jun 15 at 11:59pm | 150 pts | Not Submitted
           </div>
         </li>
         <li className="wd-assignment-list-item">
-          <a href="/Courses/1234/Assignments/302" className="wd-assignment-link">
+          <Link href="/Courses/1234/Assignments/302" className="wd-assignment-link">
             <strong>Final Exam</strong>
-          </a>
+          </Link>
           <div className="wd-assignment-details">
             Due Jul 1 at 11:59pm | 200 pts | Not Submitted
           </div>
@@ -101,9 +101,9 @@ export default function Assignments() {
       </h3>
       <ul id="wd-project-list">
         <li className="wd-assignment-list-item">
-          <a href="/Courses/1234/Assignments/401" className="wd-assignment-link">
+          <Link href="/Courses/1234/Assignments/401" className="wd-assignment-link">
             <strong>Final Project - Full Stack Web App</strong>
-          </a>
+          </Link>
           <div className="wd-assignment-details">
             Due Jul 10 at 11:59pm | 300 pts | Not Submitted
           </div>
