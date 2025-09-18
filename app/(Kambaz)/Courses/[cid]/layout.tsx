@@ -1,28 +1,19 @@
-import { ReactNode } from "react";
-import CourseNavigation from "./Navigation";
+import { ReactNode } from 'react';
 
-// Define the type for LayoutProps
-type LayoutProps = {
+// Option 1: Using async/await (recommended)
+export default async function Layout({
+  children,
+  params,
+}: {
   children: ReactNode;
-  params: {
-    cid: string;
-  };
-};
-
-export default function CoursesLayout({ children, params }: LayoutProps) {
-  const { cid } = params; // Extract cid from params
+  params: Promise<{ cid: string }>;
+}) {
+  const { cid } = await params;
+  
   return (
-    <div id="wd-courses">
-      <h2>Courses {cid}</h2>
-      <hr />
-      <table>
-        <tbody>
-          <tr>
-            <td valign="top" width="200"><CourseNavigation /></td>
-            <td valign="top" width="100%">{children}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div>
+      {/* You can use cid here if needed */}
+      {children}
     </div>
   );
 }
