@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function Assignments() {
   return (
     <div id="wd-assignments">
