@@ -1,114 +1,214 @@
+"use client";
 import Link from "next/link";
+import {
+  InputGroup,
+  FormControl,
+  Button,
+  ListGroup,
+  ListGroupItem,
+} from "react-bootstrap";
+import { FaSearch, FaPlus, FaGripVertical, FaRegFileAlt } from "react-icons/fa";
+import GreenCheckmark from "../Modules/GreenCheckmark";
+
 export default function Assignments() {
   return (
-    <div id="wd-assignments">
+    <div id="wd-assignments" className="p-3">
       {/* Search + Buttons */}
-      <input
-        placeholder="Search for Assignments"
-        id="wd-search-assignment"
-      />
-      <button id="wd-add-assignment-group">+ Group</button>
-      <button id="wd-add-assignment">+ Assignment</button>
+      <div className="clearfix mb-3">
+        {/* Search bar */}
+        <InputGroup className="w-25 float-start">
+          <InputGroup.Text>
+            <FaSearch />
+          </InputGroup.Text>
+          <FormControl
+            placeholder="Search for Assignments"
+            id="wd-search-assignment"
+          />
+        </InputGroup>
+
+        {/* Buttons */}
+        <div className="float-end">
+          <Button
+            variant="secondary"
+            size="lg"
+            className="me-2"
+            id="wd-add-assignment-group"
+          >
+            + Group
+          </Button>
+          <Button variant="danger" size="lg" id="wd-add-assignment">
+            <FaPlus className="me-1" />
+            Assignment
+          </Button>
+        </div>
+      </div>
 
       {/* ASSIGNMENTS Group */}
-      <h3 id="wd-assignments-title">
-        ASSIGNMENTS 40% of Total <button>+</button>
-      </h3>
-      <ul id="wd-assignment-list">
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/1234/Assignments/123/" className="wd-assignment-link">
-            <strong>A1 - ENV + HTML</strong>
+      <ListGroup className="mb-4">
+        <ListGroupItem className="bg-secondary p-3 fs-5">
+          <FaGripVertical className="me-2" /> ASSIGNMENTS
+          <span className="float-end">40% of Total</span>
+        </ListGroupItem>
+
+        <ListGroupItem className="p-3 border-start border-success">
+          <FaGripVertical className="me-2" />
+          <FaRegFileAlt className="me-2 text-success" />
+          <Link
+            href="/Courses/1234/Assignments/123"
+            className="fw-bold text-decoration-none"
+          >
+            A1 – ENV + HTML
           </Link>
-          <div className="wd-assignment-details">
+          <GreenCheckmark />
+          <div className="text-muted small ms-4">
             Due May 13 at 11:59pm | 100 pts | Not Submitted
           </div>
-        </li>
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/1234/Assignments/124" className="wd-assignment-link">
-            <strong>A2 - CSS + BOOTSTRAP</strong>
+        </ListGroupItem>
+
+        <ListGroupItem className="p-3 border-start border-success">
+          <FaGripVertical className="me-2" />
+          <FaRegFileAlt className="me-2 text-success" />
+          <Link
+            href="/Courses/1234/Assignments/124"
+            className="fw-bold text-decoration-none"
+          >
+            A2 – CSS + BOOTSTRAP
           </Link>
-          <div className="wd-assignment-details">
+          <GreenCheckmark />
+          <div className="text-muted small ms-4">
             Due May 20 at 11:59pm | 100 pts | Not Submitted
           </div>
-        </li>
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/1234/Assignments/125" className="wd-assignment-link">
-            <strong>A3 - JAVASCRIPT</strong>
+        </ListGroupItem>
+
+        <ListGroupItem className="p-3 border-start border-success">
+          <FaGripVertical className="me-2" />
+          <FaRegFileAlt className="me-2 text-success" />
+          <Link
+            href="/Courses/1234/Assignments/125"
+            className="fw-bold text-decoration-none"
+          >
+            A3 – JAVASCRIPT
           </Link>
-          <div className="wd-assignment-details">
+          <GreenCheckmark />
+          <div className="text-muted small ms-4">
             Due May 27 at 11:59pm | 100 pts | Not Submitted
           </div>
-        </li>
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/1234/Assignments/126" className="wd-assignment-link">
-            <strong>A4 - REACT + STATE</strong>
+        </ListGroupItem>
+
+        <ListGroupItem className="p-3 border-start border-success">
+          <FaGripVertical className="me-2" />
+          <FaRegFileAlt className="me-2 text-success" />
+          <Link
+            href="/Courses/1234/Assignments/126"
+            className="fw-bold text-decoration-none"
+          >
+            A4 – REACT + STATE
           </Link>
-          <div className="wd-assignment-details">
+          <GreenCheckmark />
+          <div className="text-muted small ms-4">
             Due Jun 3 at 11:59pm | 100 pts | Not Submitted
           </div>
-        </li>
-      </ul>
+        </ListGroupItem>
+      </ListGroup>
 
       {/* QUIZZES Group */}
-      <h3 id="wd-quizzes-title">
-        QUIZZES 10% of Total <button>+</button>
-      </h3>
-      <ul id="wd-quiz-list">
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/1234/Assignments/201" className="wd-assignment-link">
-            <strong>Q1 - HTML Basics</strong>
+      <ListGroup className="mb-4">
+        <ListGroupItem className="bg-secondary p-3 fs-5">
+          <FaGripVertical className="me-2" /> QUIZZES
+          <span className="float-end">10% of Total</span>
+        </ListGroupItem>
+
+        <ListGroupItem className="p-3 border-start border-success">
+          <FaGripVertical className="me-2" />
+          <FaRegFileAlt className="me-2 text-success" />
+          <Link
+            href="/Courses/1234/Assignments/201"
+            className="fw-bold text-decoration-none"
+          >
+            Q1 – HTML Basics
           </Link>
-          <div className="wd-assignment-details">
-            Due Jun 5 at 11:59pm | 20 pts | Not Submitted
+          <GreenCheckmark />
+          <div className="text-muted small ms-4">
+            Due Jun 5 at 11:59pm | 20 pts
           </div>
-        </li>
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/1234/Assignments/202" className="wd-assignment-link">
-            <strong>Q2 - CSS Basics</strong>
+        </ListGroupItem>
+
+        <ListGroupItem className="p-3 border-start border-success">
+          <FaGripVertical className="me-2" />
+          <FaRegFileAlt className="me-2 text-success" />
+          <Link
+            href="/Courses/1234/Assignments/202"
+            className="fw-bold text-decoration-none"
+          >
+            Q2 – CSS Basics
           </Link>
-          <div className="wd-assignment-details">
-            Due Jun 12 at 11:59pm | 20 pts | Not Submitted
+          <GreenCheckmark />
+          <div className="text-muted small ms-4">
+            Due Jun 12 at 11:59pm | 20 pts
           </div>
-        </li>
-      </ul>
+        </ListGroupItem>
+      </ListGroup>
 
       {/* EXAMS Group */}
-      <h3 id="wd-exams-title">
-        EXAMS 30% of Total <button>+</button>
-      </h3>
-      <ul id="wd-exam-list">
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/1234/Assignments/301" className="wd-assignment-link">
-            <strong>Midterm Exam</strong>
+      <ListGroup className="mb-4">
+        <ListGroupItem className="bg-secondary p-3 fs-5">
+          <FaGripVertical className="me-2" /> EXAMS
+          <span className="float-end">30% of Total</span>
+        </ListGroupItem>
+
+        <ListGroupItem className="p-3 border-start border-success">
+          <FaGripVertical className="me-2" />
+          <FaRegFileAlt className="me-2 text-success" />
+          <Link
+            href="/Courses/1234/Assignments/301"
+            className="fw-bold text-decoration-none"
+          >
+            Midterm Exam
           </Link>
-          <div className="wd-assignment-details">
-            Due Jun 15 at 11:59pm | 150 pts | Not Submitted
+          <GreenCheckmark />
+          <div className="text-muted small ms-4">
+            Due Jun 15 at 11:59pm | 150 pts
           </div>
-        </li>
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/1234/Assignments/302" className="wd-assignment-link">
-            <strong>Final Exam</strong>
+        </ListGroupItem>
+
+        <ListGroupItem className="p-3 border-start border-success">
+          <FaGripVertical className="me-2" />
+          <FaRegFileAlt className="me-2 text-success" />
+          <Link
+            href="/Courses/1234/Assignments/302"
+            className="fw-bold text-decoration-none"
+          >
+            Final Exam
           </Link>
-          <div className="wd-assignment-details">
-            Due Jul 1 at 11:59pm | 200 pts | Not Submitted
+          <GreenCheckmark />
+          <div className="text-muted small ms-4">
+            Due Jul 1 at 11:59pm | 200 pts
           </div>
-        </li>
-      </ul>
+        </ListGroupItem>
+      </ListGroup>
 
       {/* PROJECTS Group */}
-      <h3 id="wd-projects-title">
-        PROJECTS 20% of Total <button>+</button>
-      </h3>
-      <ul id="wd-project-list">
-        <li className="wd-assignment-list-item">
-          <Link href="/Courses/1234/Assignments/401" className="wd-assignment-link">
-            <strong>Final Project - Full Stack Web App</strong>
+      <ListGroup>
+        <ListGroupItem className="bg-secondary p-3 fs-5">
+          <FaGripVertical className="me-2" /> PROJECTS
+          <span className="float-end">20% of Total</span>
+        </ListGroupItem>
+
+        <ListGroupItem className="p-3 border-start border-success">
+          <FaGripVertical className="me-2" />
+          <FaRegFileAlt className="me-2 text-success" />
+          <Link
+            href="/Courses/1234/Assignments/401"
+            className="fw-bold text-decoration-none"
+          >
+            Final Project – Full Stack Web App
           </Link>
-          <div className="wd-assignment-details">
-            Due Jul 10 at 11:59pm | 300 pts | Not Submitted
+          <GreenCheckmark />
+          <div className="text-muted small ms-4">
+            Due Jul 10 at 11:59pm | 300 pts
           </div>
-        </li>
-      </ul>
+        </ListGroupItem>
+      </ListGroup>
     </div>
   );
 }

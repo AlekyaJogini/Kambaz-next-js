@@ -1,108 +1,163 @@
 import Link from "next/link";
 import Image from "next/image";
+import {
+  Row,
+  Col,
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardText,
+  Button,
+} from "react-bootstrap";
+
 export default function Dashboard() {
   return (
-    <div id="wd-dashboard">
-      <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
-      <h2 id="wd-dashboard-published">Published Courses (12)</h2> <hr />
+    <div id="wd-dashboard" className="p-3">
+      <h1 id="wd-dashboard-title">Dashboard</h1>
+      <hr />
+      <h2 id="wd-dashboard-published">Published Courses (7)</h2>
+      <hr />
+
       <div id="wd-dashboard-courses">
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/1234" className="wd-dashboard-course-link">
-            <Image src="/images/reactjs.jpg" width={200} height={150} alt="React JS Logo" />
-            <div>
-              <h5> CS1234 React JS </h5>
-              <p className="wd-dashboard-course-title">
-                Full Stack software developer
-              </p>
-              <button> Go </button>
-            </div>
-          </Link>
-        </div>
-        {/* Course 2 */}
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/2345" className="wd-dashboard-course-link">
-            <Image src="/images/nodejs.jpg" width={200} height={150} alt="Node.js" />
-            <div>
-              <h5>CS2345 Node.js</h5>
-              <p className="wd-dashboard-course-title">
-                Backend Development
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+        <Row xs={1} sm={2} md={3} lg={4} className="g-4">
+         {/* Course 1 */}
+<Col style={{ width: "300px" }}>
+  <Card>
+    <Link
+      href="/Courses/1234/Home"
+      className="text-decoration-none text-dark"
+    >
+      <CardImg
+        variant="top"
+        src="/images/reactjs.jpg"
+        height={160}
+        alt="ReactJS"
+      />
+      <CardBody>
+        <CardTitle>CS1234 ReactJS</CardTitle>
+        <CardText>Full Stack Software Developer</CardText>
+        <Button variant="primary">Go</Button>
+      </CardBody>
+    </Link>
+  </Card>
+</Col>
 
-        {/* Course 3 */}
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/3456" className="wd-dashboard-course-link">
-            <Image src="/images/mongodb.jpg" width={200} height={150} alt="MongoDB" />
-            <div>
-              <h5>CS3456 MongoDB</h5>
-              <p className="wd-dashboard-course-title">
-                NoSQL Database Systems
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+          {/* Course 2 */}
+          <Col style={{ width: "300px" }}>
+            <Card>
+              <Link href="/Courses/2345/Home" className="text-decoration-none text-dark">
+                <CardImg
+                  variant="top"
+                  src="/images/nodejs.jpg"
+                  height={160}
+                  alt="Node.js"
+                />
+                <CardBody>
+                  <CardTitle>CS2345 Node.js</CardTitle>
+                  <CardText>Backend Development</CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
 
-        {/* Course 4 */}
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/4567" className="wd-dashboard-course-link">
-            <Image src="/images/nextjs.jpg" width={200} height={150} alt="Next.js" />
-            <div>
-              <h5>CS4567 Next.js</h5>
-              <p className="wd-dashboard-course-title">
-                Server-Side Rendering
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+          {/* Course 3 */}
+          <Col style={{ width: "300px" }}>
+            <Card>
+              <Link href="/Courses/3456/Home" className="text-decoration-none text-dark">
+                <CardImg
+                  variant="top"
+                  src="/images/mongodb.jpg"
+                  height={160}
+                  alt="MongoDB"
+                />
+                <CardBody>
+                  <CardTitle>CS3456 MongoDB</CardTitle>
+                  <CardText>NoSQL Database Systems</CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
 
-        {/* Course 5 */}
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/5678" className="wd-dashboard-course-link">
-            <Image src="/images/html.jpg" width={200} height={150} alt="HTML" />
-            <div>
-              <h5>CS5678 HTML & Web Basics</h5>
-              <p className="wd-dashboard-course-title">
-                Web Foundations
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+          {/* Course 4 */}
+          <Col style={{ width: "300px" }}>
+            <Card>
+              <Link href="/Courses/4567/Home" className="text-decoration-none text-dark">
+                <CardImg
+                  variant="top"
+                  src="/images/nextjs.jpg"
+                  height={160}
+                  alt="Next.js"
+                />
+                <CardBody>
+                  <CardTitle>CS4567 Next.js</CardTitle>
+                  <CardText>Server-Side Rendering</CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
 
-        {/* Course 6 */}
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/6789" className="wd-dashboard-course-link">
-            <Image src="/images/css.jpg" width={200} height={150} alt="CSS" />
-            <div>
-              <h5>CS6789 CSS & Styling</h5>
-              <p className="wd-dashboard-course-title">
-                Frontend Design
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+          {/* Course 5 */}
+          <Col style={{ width: "300px" }}>
+            <Card>
+              <Link href="/Courses/5678/Home" className="text-decoration-none text-dark">
+                <CardImg
+                  variant="top"
+                  src="/images/html.jpg"
+                  height={160}
+                  alt="HTML"
+                />
+                <CardBody>
+                  <CardTitle>CS5678 HTML </CardTitle>
+                  <CardText>Web Foundations</CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
 
-        {/* Course 7 */}
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/7890" className="wd-dashboard-course-link">
-            <Image src="/images/javascript.jpg" width={200} height={150} alt="JavaScript" />
-            <div>
-              <h5>CS7890 JavaScript</h5>
-              <p className="wd-dashboard-course-title">
-                Interactive Web Programming
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+          {/* Course 6 */}
+          <Col style={{ width: "300px" }}>
+            <Card>
+              <Link href="/Courses/6789/Home" className="text-decoration-none text-dark">
+                <CardImg
+                  variant="top"
+                  src="/images/css.jpg"
+                  height={160}
+                  alt="CSS"
+                />
+                <CardBody>
+                  <CardTitle>CS6789 CSS & Styling</CardTitle>
+                  <CardText>Frontend Design</CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
 
+          {/* Course 7 */}
+          <Col style={{ width: "300px" }}>
+            <Card>
+              <Link href="/Courses/7890/Home" className="text-decoration-none text-dark">
+                <CardImg
+                  variant="top"
+                  src="/images/javascript.jpg"
+                  height={160}
+                  alt="JavaScript"
+                />
+                <CardBody>
+                  <CardTitle>CS7890 JavaScript</CardTitle>
+                  <CardText>Interactive Web Programming</CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
+        </Row>
       </div>
     </div>
-);}
-
+  );
+}
