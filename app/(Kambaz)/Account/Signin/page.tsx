@@ -6,11 +6,13 @@ export default function Signin() {
       <h1>Sign in</h1>
 
       <input
+        defaultValue="alekyajogini"
         placeholder="username"
         className="form-control mb-2"
         id="wd-username"
       />
       <input
+        defaultValue="12345678"
         placeholder="password"
         type="password"
         className="form-control mb-2"
