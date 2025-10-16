@@ -1,14 +1,11 @@
 import { ReactNode } from "react";
-import KambazNavigation from "./Navigation";
 import CourseNavigation from "./Navigation";
 import { FaAlignJustify } from "react-icons/fa";
 import {courses} from "../../Database";
 import Breadcrumb from "./Breadcrumb";
-export default function KambazLayout({ children ,params  }: Readonly<{ children: ReactNode; params: { cid: string } }>) {
+export default function KambazLayout({ children, params }: { children: ReactNode; params: Record<string, unknown> }) {
 
-  
-
-  const {cid}= params;
+  const { cid } = params as { cid: string };
   const course = courses.find((course) => course._id === cid);
 
 
