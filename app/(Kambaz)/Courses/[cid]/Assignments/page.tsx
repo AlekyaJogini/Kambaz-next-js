@@ -48,7 +48,7 @@ export default function Assignments() {
       </div>
 
       {/* ASSIGNMENTS Group */}
-<ListGroup className="mb-4">
+<ListGroup className="mb-4 wd-lesson">
   <ListGroupItem className="bg-secondary p-3 fs-5">
     <FaGripVertical className="me-2" /> ASSIGNMENTS
     <span className="float-end">40% of Total</span>
@@ -144,7 +144,7 @@ export default function Assignments() {
       </ListGroup> */}
 
       {/* QUIZZES Group */}
-      <ListGroup className="mb-4">
+      <ListGroup className="mb-4 wd-lesson">
         <ListGroupItem className="bg-secondary p-3 fs-5">
           <FaGripVertical className="me-2" /> QUIZZES
           <span className="float-end">10% of Total</span>
@@ -182,7 +182,7 @@ export default function Assignments() {
       </ListGroup>
 
       {/* EXAMS Group */}
-      <ListGroup className="mb-4">
+      <ListGroup className="mb-4 wd-lesson">
         <ListGroupItem className="bg-secondary p-3 fs-5">
           <FaGripVertical className="me-2" /> EXAMS
           <span className="float-end">30% of Total</span>
@@ -220,7 +220,7 @@ export default function Assignments() {
       </ListGroup>
 
       {/* PROJECTS Group */}
-      <ListGroup>
+      <ListGroup className="mb-4 wd-lesson">
         <ListGroupItem className="bg-secondary p-3 fs-5">
           <FaGripVertical className="me-2" /> PROJECTS
           <span className="float-end">20% of Total</span>
