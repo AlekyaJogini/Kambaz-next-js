@@ -9,8 +9,12 @@ import {
 } from "react-bootstrap";
 import { FaSearch, FaPlus, FaGripVertical, FaRegFileAlt } from "react-icons/fa";
 import GreenCheckmark from "../Modules/GreenCheckmark";
+import { useParams } from "next/navigation";
+import * as db from "../../../Database";
+
 
 export default function Assignments() {
+  const { cid } = useParams();
   return (
     <div id="wd-assignments" className="p-3">
       {/* Search + Buttons */}
@@ -44,6 +48,34 @@ export default function Assignments() {
       </div>
 
       {/* ASSIGNMENTS Group */}
+<ListGroup className="mb-4">
+  <ListGroupItem className="bg-secondary p-3 fs-5">
+    <FaGripVertical className="me-2" /> ASSIGNMENTS
+    <span className="float-end">40% of Total</span>
+  </ListGroupItem>
+
+  {db.assignments
+    .filter((a) => a.course === cid)
+    .map((a) => (
+      <ListGroupItem key={a._id} className="p-3 border-start border-success">
+        <FaGripVertical className="me-2" />
+        <FaRegFileAlt className="me-2 text-success" />
+        <Link
+          href={`/Courses/${cid}/Assignments/${a._id}`}
+          className="fw-bold text-decoration-none"
+        >
+          {a.title}
+        </Link>
+        <GreenCheckmark />
+        <div className="text-muted small ms-4">
+          Due date TBD | 100 pts | Not Submitted
+        </div>
+      </ListGroupItem>
+    ))}
+</ListGroup>
+
+
+      {/* ASSIGNMENTS Group
       <ListGroup className="mb-4">
         <ListGroupItem className="bg-secondary p-3 fs-5">
           <FaGripVertical className="me-2" /> ASSIGNMENTS
@@ -109,7 +141,7 @@ export default function Assignments() {
             Due Jun 3 at 11:59pm | 100 pts | Not Submitted
           </div>
         </ListGroupItem>
-      </ListGroup>
+      </ListGroup> */}
 
       {/* QUIZZES Group */}
       <ListGroup className="mb-4">

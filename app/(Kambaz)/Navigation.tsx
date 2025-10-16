@@ -9,6 +9,14 @@ import Link from "next/link";
 
 export default function KambazNavigation() {
   const pathname = usePathname();
+   const links = [
+    { label: "Dashboard", path: "/Dashboard", icon: AiOutlineDashboard },
+    { label: "Courses",   path: "/Courses", icon: LiaBookSolid },
+    { label: "Calendar",  path: "/Calendar",  icon: IoCalendarOutline },
+    { label: "Inbox",     path: "/Inbox",     icon: FaInbox },
+    { label: "Labs",      path: "/Labs",             icon: LiaCogSolid },
+  ];
+
 
   // helper to decide if a link is active
   const isActive = (path: string) => pathname.startsWith(path);
@@ -30,125 +38,24 @@ export default function KambazNavigation() {
         <img src="/images/NEU.png" width="75" alt="Northeastern University" />
       </ListGroupItem>
 
-      {/* Account */}
-      <ListGroupItem
-        className={`border-0 text-center ${
-          isActive("/Account") ? "bg-white" : "bg-black"
-        }`}
-      >
-        <Link
-          href="/Account"
-          id="wd-account-link"
-          className={`text-decoration-none ${
-            isActive("/Account") ? "text-danger" : "text-white"
-          }`}
-        >
-          <FaRegCircleUser
-            className={`fs-1 ${isActive("/Account") ? "text-danger" : "text-white"}`}
-          />
-          <br />
-          Account
-        </Link>
+     <ListGroupItem as={Link} href="/Account"
+        className={`text-center border-0 bg-black
+            ${pathname.includes("Account") ? "bg-white text-danger" : "bg-black text-white"}`}>
+        <FaRegCircleUser
+          className={`fs-1 ${pathname.includes("Account") ? "text-danger" : "text-white"}`} />
+        <br />
+        Account
       </ListGroupItem>
+      {links.map((link) => (
+        <ListGroupItem key={link.label} as={Link} href={link.path}
+          className={`bg-black text-center border-0
+              ${pathname.includes(link.label) ? "text-danger bg-white" : "text-white bg-black"}`}>
+          {link.icon({ className: "fs-1 text-danger"})}
+          <br />
+          {link.label}
+        </ListGroupItem>
+      ))}
 
-      {/* Dashboard */}
-      <ListGroupItem
-        className={`border-0 text-center ${
-          isActive("/Dashboard") ? "bg-white" : "bg-black"
-        }`}
-      >
-        <Link
-          href="/Dashboard"
-          id="wd-dashboard-link"
-          className={`text-decoration-none ${
-            isActive("/Dashboard") ? "text-danger" : "text-white"
-          }`}
-        >
-          <AiOutlineDashboard
-            className={`fs-1 ${
-              isActive("/Dashboard") ? "text-danger" : "text-danger"
-            }`}
-          />
-          <br />
-          Dashboard
-        </Link>
-      </ListGroupItem>
 
-      {/* Courses */}
-      <ListGroupItem
-        className={`border-0 text-center ${
-          isActive("/Courses") ? "bg-white" : "bg-black"
-        }`}
-      >
-        <Link
-          href="/Courses"
-          id="wd-course-link"
-          className={`text-decoration-none ${
-            isActive("/Courses") ? "text-danger" : "text-white"
-          }`}
-        >
-          <LiaBookSolid className="fs-1 text-danger" />
-          <br />
-          Courses
-        </Link>
-      </ListGroupItem>
-
-      {/* Calendar */}
-      <ListGroupItem
-        className={`border-0 text-center ${
-          isActive("/Calendar") ? "bg-white" : "bg-black"
-        }`}
-      >
-        <Link
-          href="/Calendar"
-          id="wd-calendar-link"
-          className={`text-decoration-none ${
-            isActive("/Calendar") ? "text-danger" : "text-white"
-          }`}
-        >
-          <IoCalendarOutline className="fs-1 text-danger" />
-          <br />
-          Calendar
-        </Link>
-      </ListGroupItem>
-
-      {/* Inbox */}
-      <ListGroupItem
-        className={`border-0 text-center ${
-          isActive("/Inbox") ? "bg-white" : "bg-black"
-        }`}
-      >
-        <Link
-          href="/Inbox"
-          id="wd-inbox-link"
-          className={`text-decoration-none ${
-            isActive("/Inbox") ? "text-danger" : "text-white"
-          }`}
-        >
-          <FaInbox className="fs-1 text-danger" />
-          <br />
-          Inbox
-        </Link>
-      </ListGroupItem>
-
-      {/* Labs */}
-      <ListGroupItem
-        className={`border-0 text-center ${
-          isActive("/Labs") ? "bg-white" : "bg-black"
-        }`}
-      >
-        <Link
-          href="/Labs"
-          id="wd-labs-link"
-          className={`text-decoration-none ${
-            isActive("/Labs") ? "text-danger" : "text-white"
-          }`}
-        >
-          <LiaCogSolid className="fs-1 text-danger" />
-          <br />
-          Labs
-        </Link>
-      </ListGroupItem>
-    </ListGroup>
-  );
+    </ListGroup>  );
 }

@@ -1,7 +1,15 @@
 "use client";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import * as db from "../../../../Database";
 
 export default function AssignmentEditor() {
+  const { cid, aid } = useParams();               // ✅ read IDs from the URL
+  const assignment = db.assignments.find(         // ✅ find the assignment data
+    (a) => a._id === aid
+  );
+
   return (
     <div id="wd-assignments-editor" className="p-4">
       <Card>
@@ -16,7 +24,10 @@ export default function AssignmentEditor() {
             {/* Assignment Name */}
             <Form.Group className="mb-3" controlId="wd-name">
               <Form.Label>Assignment Name</Form.Label>
-              <Form.Control type="text" defaultValue="A1 - ENV + HTML" />
+              <Form.Control
+                type="text"
+                defaultValue={assignment ? assignment.title : "Untitled"}
+              />
             </Form.Group>
 
             {/* Description */}
@@ -25,7 +36,10 @@ export default function AssignmentEditor() {
               <Form.Control
                 as="textarea"
                 rows={5}
-                defaultValue={`The assignment is available online. Submit a link to the landing page of your Web application running on Netlify. The landing page should include the following: your name and section, links to each of the lab assignments, and a link to the Kambaz application. The Kambaz application should include a link to navigate back to the landing page.`}
+                defaultValue={
+                  assignment?.description ||
+                  `The assignment is available online. Submit a link to your Web application.`
+                }
               />
             </Form.Group>
 
@@ -33,7 +47,10 @@ export default function AssignmentEditor() {
               {/* Points */}
               <Form.Group as={Col} controlId="wd-points">
                 <Form.Label>Points</Form.Label>
-                <Form.Control type="number" defaultValue={100} />
+                <Form.Control
+                  type="number"
+                  defaultValue={assignment?.points || 100}
+                />
               </Form.Group>
 
               {/* Assignment Group */}
@@ -86,17 +103,26 @@ export default function AssignmentEditor() {
             <Row>
               <Form.Group as={Col} className="mb-3" controlId="wd-due-date">
                 <Form.Label>Due</Form.Label>
-                <Form.Control type="date" defaultValue="2024-05-13" />
+                <Form.Control
+                  type="date"
+                  defaultValue={assignment?.due || "2025-10-30"}
+                />
               </Form.Group>
 
               <Form.Group as={Col} className="mb-3" controlId="wd-available-from">
                 <Form.Label>Available from</Form.Label>
-                <Form.Control type="date" defaultValue="2024-05-06" />
+                <Form.Control
+                  type="date"
+                  defaultValue={assignment?.available || "2025-10-10"}
+                />
               </Form.Group>
 
               <Form.Group as={Col} className="mb-3" controlId="wd-available-until">
                 <Form.Label>Until</Form.Label>
-                <Form.Control type="date" defaultValue="2024-05-20" />
+                <Form.Control
+                  type="date"
+                  defaultValue={assignment?.until || "2025-10-31"}
+                />
               </Form.Group>
             </Row>
           </Form>
@@ -104,10 +130,15 @@ export default function AssignmentEditor() {
 
         {/* Footer */}
         <Card.Footer className="d-flex justify-content-end">
-          <Button variant="secondary" className="me-2">
-            Cancel
-          </Button>
-          <Button variant="danger">Save</Button>
+          {/* ✅ Navigation links use the course ID from the URL */}
+          <Link href={`/Courses/${cid}/Assignments`}>
+            <Button variant="secondary" className="me-2">
+              Cancel
+            </Button>
+          </Link>
+          <Link href={`/Courses/${cid}/Assignments`}>
+            <Button variant="danger">Save</Button>
+          </Link>
         </Card.Footer>
       </Card>
     </div>
