@@ -13,13 +13,14 @@ import ObjectStateVariable from "./ObjectStateVariable";
 import ArrayStateVariable from "./ArrayStateVariable";
 import ParentStateComponent from "./ParentStateComponent";
 import ReduxExamples from "./ReduxExamples/page";
-import store  from "./store/page";
+import store  from "./store";
 
 import HelloRedux from "./ReduxExamples/HelloRedux/page";
 
 import CounterRedux from "./ReduxExamples/CounterRedux/page";
 import AddRedux from "./ReduxExamples/AddRedux/page";
 import TodoList from "./ReduxExamples/todos/TodoList";
+
 
 
 export default function Lab4() {
