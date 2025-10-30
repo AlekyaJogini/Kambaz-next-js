@@ -1,7 +1,10 @@
-/* eslint-disable react/jsx-key */
+"use client";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewCourse, deleteCourse, updateCourse } from "../Courses/reducer";
+import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
 import Link from "next/link";
-import * as db from "../Database"
-import Image from "next/image";
+import * as db from "../Database";
 import {
   Row,
   Col,
@@ -11,167 +14,142 @@ import {
   CardTitle,
   CardText,
   Button,
+  FormControl,
 } from "react-bootstrap";
 
 export default function Dashboard() {
-   
-   const courses = db.courses;
-   
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const { enrollments } = db;
+  const { courses } = useSelector((state: any) => state.coursesReducer);
+  const dispatch = useDispatch();
+
+  const [course, setCourse] = useState<any>({
+    _id: uuidv4(),
+    name: "New Course",
+    number: "New Number",
+    startDate: "2023-09-10",
+    endDate: "2023-12-15",
+    image: "/images/reactjs.jpg",
+    description: "New Description",
+  });
+
   return (
     <div id="wd-dashboard" className="p-3">
       <h1 id="wd-dashboard-title">Dashboard</h1>
       <hr />
-      <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2>
+
+      {/* Add/Update Course Section */}
+      <h5>
+        New Course
+        <button
+          className="btn btn-primary float-end"
+          id="wd-add-new-course-click"
+          onClick={() => dispatch(addNewCourse(course))}
+        >
+          Add
+        </button>
+
+        <button
+          className="btn btn-warning float-end me-2"
+          id="wd-update-course-click"
+          onClick={() => dispatch(updateCourse(course))}
+        >
+          Update
+        </button>
+      </h5>
+
+      <br />
+
+      <FormControl
+        value={course.name}
+        className="mb-2"
+        onChange={(e) => setCourse({ ...course, name: e.target.value })}
+      />
+
+      <FormControl
+        as="textarea"
+        value={course.description}
+        rows={3}
+        onChange={(e) => setCourse({ ...course, description: e.target.value })}
+      />
+
+      <hr />
+
+      {/* Published Courses Section */}
+      <h2 id="wd-dashboard-published">
+        Published Courses ({courses.length})
+      </h2>
       <hr />
 
       <div id="wd-dashboard-courses">
-
         <Row xs={1} md={5} className="g-4">
-          {courses.map((course) => (
-            <Col key={course._id} className="wd-dashboard-course" style={{ width: "300px" }}>
-              <Card>
-                <Link href={`/Courses/${course._id}/Home`}
-                      className="wd-dashboard-course-link text-decoration-none text-dark" >
-                  <CardImg src="/images/reactjs.jpg" variant="top" width="100%" height={160} />
-                  <CardBody className="card-body">
-                    <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
-                      {course.name} </CardTitle>
-                    <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
-                      {course.description} </CardText>
-                    <Button variant="primary"> Go </Button>
-                  </CardBody>
-                </Link>
-              </Card>
-            </Col>
-          ))}
+          {courses
+            // ✅ Filter courses by the logged-in user's enrollments
+            .filter((course: any) =>
+              enrollments.some(
+                (enrollment: any) =>
+                  enrollment.user === currentUser?._id &&
+                  enrollment.course === course._id
+              )
+            )
+            .map((course: any) => (
+              <Col
+                key={course._id}
+                className="wd-dashboard-course"
+                style={{ width: "300px" }}
+              >
+                <Card>
+                  <Link
+                    href={`/Courses/${course._id}/Home`}
+                    className="wd-dashboard-course-link text-decoration-none text-dark"
+                  >
+                    <CardImg
+                      src="/images/reactjs.jpg"
+                      variant="top"
+                      width="100%"
+                      height={160}
+                    />
+                    <CardBody className="card-body">
+                      <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
+                        {course.name}
+                      </CardTitle>
+                      <CardText
+                        className="wd-dashboard-course-description overflow-hidden"
+                        style={{ height: "100px" }}
+                      >
+                        {course.description}
+                      </CardText>
+
+                      <Button variant="primary">Go</Button>
+
+                      <button
+                        onClick={(event) => {
+                          event.preventDefault();
+                          dispatch(deleteCourse(course._id));
+                        }}
+                        className="btn btn-danger float-end"
+                        id="wd-delete-course-click"
+                      >
+                        Delete
+                      </button>
+
+                      <button
+                        id="wd-edit-course-click"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          setCourse(course);
+                        }}
+                        className="btn btn-warning me-2 float-end"
+                      >
+                        Edit
+                      </button>
+                    </CardBody>
+                  </Link>
+                </Card>
+              </Col>
+            ))}
         </Row>
-
-
-</div>
+      </div>
     </div>
   );
 }
-//           {courses.map((course) => (
-          
-          
-
-//           {/* Course 2 */}
-//           <Col style={{ width: "300px" }}>
-//             <Card>
-//               <Link href="/Courses/2345/Home" className="text-decoration-none text-dark">
-//                 <CardImg
-//                   variant="top"
-//                   src="/images/nodejs.jpg"
-//                   height={160}
-//                   alt="Node.js"
-//                 />
-//                 <CardBody>
-//                   <CardTitle>CS2345 Node.js</CardTitle>
-//                   <CardText>Backend Development</CardText>
-//                   <Button variant="primary">Go</Button>
-//                 </CardBody>
-//               </Link>
-//             </Card>
-//           </Col>
-
-//           {/* Course 3 */}
-//           <Col style={{ width: "300px" }}>
-//             <Card>
-//               <Link href="/Courses/3456/Home" className="text-decoration-none text-dark">
-//                 <CardImg
-//                   variant="top"
-//                   src="/images/mongodb.jpg"
-//                   height={160}
-//                   alt="MongoDB"
-//                 />
-//                 <CardBody>
-//                   <CardTitle>CS3456 MongoDB</CardTitle>
-//                   <CardText>NoSQL Database Systems</CardText>
-//                   <Button variant="primary">Go</Button>
-//                 </CardBody>
-//               </Link>
-//             </Card>
-//           </Col>
-
-//           {/* Course 4 */}
-//           <Col style={{ width: "300px" }}>
-//             <Card>
-//               <Link href="/Courses/4567/Home" className="text-decoration-none text-dark">
-//                 <CardImg
-//                   variant="top"
-//                   src="/images/nextjs.jpg"
-//                   height={160}
-//                   alt="Next.js"
-//                 />
-//                 <CardBody>
-//                   <CardTitle>CS4567 Next.js</CardTitle>
-//                   <CardText>Server-Side Rendering</CardText>
-//                   <Button variant="primary">Go</Button>
-//                 </CardBody>
-//               </Link>
-//             </Card>
-//           </Col>
-
-//           {/* Course 5 */}
-//           <Col style={{ width: "300px" }}>
-//             <Card>
-//               <Link href="/Courses/5678/Home" className="text-decoration-none text-dark">
-//                 <CardImg
-//                   variant="top"
-//                   src="/images/html.jpg"
-//                   height={160}
-//                   alt="HTML"
-//                 />
-//                 <CardBody>
-//                   <CardTitle>CS5678 HTML </CardTitle>
-//                   <CardText>Web Foundations</CardText>
-//                   <Button variant="primary">Go</Button>
-//                 </CardBody>
-//               </Link>
-//             </Card>
-//           </Col>
-
-//           {/* Course 6 */}
-//           <Col style={{ width: "300px" }}>
-//             <Card>
-//               <Link href="/Courses/6789/Home" className="text-decoration-none text-dark">
-//                 <CardImg
-//                   variant="top"
-//                   src="/images/css.jpg"
-//                   height={160}
-//                   alt="CSS"
-//                 />
-//                 <CardBody>
-//                   <CardTitle>CS6789 CSS & Styling</CardTitle>
-//                   <CardText>Frontend Design</CardText>
-//                   <Button variant="primary">Go</Button>
-//                 </CardBody>
-//               </Link>
-//             </Card>
-//           </Col>
-
-//           {/* Course 7 */}
-//           <Col style={{ width: "300px" }}>
-//             <Card>
-//               <Link href="/Courses/7890/Home" className="text-decoration-none text-dark">
-//                 <CardImg
-//                   variant="top"
-//                   src="/images/javascript.jpg"
-//                   height={160}
-//                   alt="JavaScript"
-//                 />
-//                 <CardBody>
-//                   <CardTitle>CS7890 JavaScript</CardTitle>
-//                   <CardText>Interactive Web Programming</CardText>
-//                   <Button variant="primary">Go</Button>
-//                 </CardBody>
-//               </Link>
-//             </Card>
-//           </Col>
-        
-//           ))}
-//         </Row>
-//       </div>
-//     </div>
-//   );
-// }
