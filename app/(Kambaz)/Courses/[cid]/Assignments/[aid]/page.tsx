@@ -36,7 +36,7 @@ dispatch(addAssignment(assignment));
 } else {
 dispatch(updateAssignment(assignment));
 }
-router.push('/Courses/${cid}/Assignments');
+ router.push(`/Courses/${cid}/Assignments`);
 };
 return (
 <div id="wd-assignments-editor" className="p-4">
