@@ -1,3 +1,4 @@
+
 import axios from "axios";
 const HTTP_SERVER = process.env.NEXT_PUBLIC_HTTP_SERVER;
 
@@ -54,6 +55,22 @@ export const deleteTodo = async (todo: any) => {
   const response = await axios.delete(`${TODOS_API}/${todo.id}`);
   return response.data;
 };
+
+const USERS_API = `${HTTP_SERVER}/api/users`;
+
+
+export const updateUser = async (user: any) => {
+  const response = await axios.put(`${USERS_API}/${user._id}`, user);
+  return response.data;
+};
+
+export const signout = async () => {
+  const response = await axios.post(`${USERS_API}/signout`);
+  return response.data;
+};
+
+
+
 
 
 

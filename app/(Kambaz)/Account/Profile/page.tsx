@@ -1,4 +1,5 @@
 "use client";
+import * as client from "../client";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -25,6 +26,11 @@ export default function Profile() {
     dispatch(setCurrentUser(null));
     router.push("/Account/Signin");
   };
+
+  const updateProfile = async () => {
+  const updatedProfile = await client.updateUser(profile);
+  dispatch(setCurrentUser(updatedProfile));
+};
 
   return (
     <div id="wd-profile-screen" className="p-3" style={{ maxWidth: "400px" }}>
@@ -102,6 +108,15 @@ export default function Profile() {
             <option value="FACULTY">Faculty</option>
             <option value="STUDENT">Student</option>
           </select>
+
+          <Button
+  id="wd-update-btn"
+  className="btn btn-primary w-100 mb-2"
+  onClick={updateProfile}
+>
+  Update
+</Button>
+
 
           <Button
             id="wd-signout-btn"
