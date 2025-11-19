@@ -13,7 +13,7 @@ export default function Session({ children }: { children: any }) {
       const user = await client.profile();
       if (user) dispatch(setCurrentUser(user));
     } catch (err) {
-      console.error("No active session");
+      
     }
     setPending(false);
   };
