@@ -22,12 +22,7 @@ export default function Profile() {
   }, [currentUser, router]);
 
   // ✅ Handle sign out
-  const signout = async() => {
-     await client.signout();
-  
-     
-     
-
+  const signout = () => {
     dispatch(setCurrentUser(null));
     router.push("/Account/Signin");
   };
