@@ -9,10 +9,10 @@ import * as client from "../client";
 
 export default function Signup() {
   const [user, setUser] = useState<any>({
-     username: "",  // ✅ Initialize with empty string
-    password: ""   // ✅ Initialize with empty string
+     username: "",  
+    password: ""   
   });
-  const [error, setError] = useState("");  // ✅ ADD ERROR STATE
+  const [error, setError] = useState("");  
   const dispatch = useDispatch();
   const router = useRouter();  // ✅ ADD THIS
   
