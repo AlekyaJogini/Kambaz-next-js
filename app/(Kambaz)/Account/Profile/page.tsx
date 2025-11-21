@@ -12,6 +12,11 @@ export default function Profile() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const [profile, setProfile] = useState<any>({});
 
+  const updateProfile = async () => {
+    const updatedProfile = await client.updateUser(profile);
+    dispatch(setCurrentUser(updatedProfile));
+  };
+
   // ✅ Load user or redirect to Signin
   useEffect(() => {
     if (!currentUser) {
@@ -22,26 +27,21 @@ export default function Profile() {
   }, [currentUser, router]);
 
   // ✅ Handle sign out
-  const signout = () => {
+  const signout = async () => {
+    await client.signout();  // ✅ FIX: Added () parentheses
     dispatch(setCurrentUser(null));
     router.push("/Account/Signin");
   };
 
-  const updateProfile = async () => {
-  const updatedProfile = await client.updateUser(profile);
-  dispatch(setCurrentUser(updatedProfile));
-};
-
   return (
     <div id="wd-profile-screen" className="p-3" style={{ maxWidth: "400px" }}>
       <h3>Profile</h3>
-
       {profile && (
         <div>
           <FormControl
             id="wd-username"
             className="mb-2"
-            defaultValue={profile.username}
+            value={profile.username || ""}  // ✅ CHANGE: value instead of defaultValue
             placeholder="username"
             onChange={(e) =>
               setProfile({ ...profile, username: e.target.value })
@@ -51,7 +51,7 @@ export default function Profile() {
             id="wd-password"
             className="mb-2"
             type="password"
-            defaultValue={profile.password}
+            value={profile.password || ""}  // ✅ CHANGE: value instead of defaultValue
             placeholder="password"
             onChange={(e) =>
               setProfile({ ...profile, password: e.target.value })
@@ -60,7 +60,7 @@ export default function Profile() {
           <FormControl
             id="wd-firstname"
             className="mb-2"
-            defaultValue={profile.firstName}
+            value={profile.firstName || ""}  // ✅ CHANGE: value instead of defaultValue
             placeholder="First Name"
             onChange={(e) =>
               setProfile({ ...profile, firstName: e.target.value })
@@ -69,7 +69,7 @@ export default function Profile() {
           <FormControl
             id="wd-lastname"
             className="mb-2"
-            defaultValue={profile.lastName}
+            value={profile.lastName || ""}  // ✅ CHANGE: value instead of defaultValue
             placeholder="Last Name"
             onChange={(e) =>
               setProfile({ ...profile, lastName: e.target.value })
@@ -79,7 +79,7 @@ export default function Profile() {
             id="wd-dob"
             className="mb-2"
             type="date"
-            defaultValue={profile.dob}
+            value={profile.dob || ""}  // ✅ CHANGE: value instead of defaultValue
             onChange={(e) =>
               setProfile({ ...profile, dob: e.target.value })
             }
@@ -88,17 +88,16 @@ export default function Profile() {
             id="wd-email"
             className="mb-2"
             type="email"
-            defaultValue={profile.email}
+            value={profile.email || ""}  // ✅ CHANGE: value instead of defaultValue
             placeholder="Email"
             onChange={(e) =>
               setProfile({ ...profile, email: e.target.value })
             }
           />
-
           <select
             id="wd-role"
             className="form-select mb-3"
-            defaultValue={profile.role}
+            value={profile.role || "USER"}  // ✅ CHANGE: value instead of defaultValue
             onChange={(e) =>
               setProfile({ ...profile, role: e.target.value })
             }
@@ -107,17 +106,11 @@ export default function Profile() {
             <option value="ADMIN">Admin</option>
             <option value="FACULTY">Faculty</option>
             <option value="STUDENT">Student</option>
+            <option value="TA">TA</option>  {/* ✅ ADD: TA option */}
           </select>
-
-          <Button
-  id="wd-update-btn"
-  className="btn btn-primary w-100 mb-2"
-  onClick={updateProfile}
->
-  Update
-</Button>
-
-
+          <button onClick={updateProfile} className="btn btn-primary w-100 mb-2">
+            Update
+          </button>
           <Button
             id="wd-signout-btn"
             className="btn btn-danger w-100"
