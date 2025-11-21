@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import * as db from "../../Database";
 import { FormControl, Button } from "react-bootstrap";
-import Profile from "../Profile/page";
+
 
 export default function Signin() {
  const [credentials, setCredentials] = useState<any>({});
