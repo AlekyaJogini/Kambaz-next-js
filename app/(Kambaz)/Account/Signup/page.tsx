@@ -14,22 +14,22 @@ export default function Signup() {
   });
   const [error, setError] = useState("");  
   const dispatch = useDispatch();
-  const router = useRouter();  
+  const router = useRouter();  // ✅ ADD THIS
   
   const signup = async () => {
     try {
       const currentUser = await client.signup(user);
       dispatch(setCurrentUser(currentUser));
-      router.push("/Account/Profile");  
+      router.push("/Account/Profile");  // ✅ USE router.push
     } catch (err: any) {
-      setError(err.response?.data?.message || "Signup failed");  
+      setError(err.response?.data?.message || "Signup failed");  // ✅ HANDLE ERRORS
     }
   };
   
   return (
     <div className="wd-signup-screen">
       <h1>Sign up</h1>
-      {error && <div className="alert alert-danger">{error}</div>} 
+      {error && <div className="alert alert-danger">{error}</div>}  {/* ✅ SHOW ERRORS */}
       <FormControl 
         value={user.username} 
         onChange={(e) => setUser({ ...user, username: e.target.value })}
