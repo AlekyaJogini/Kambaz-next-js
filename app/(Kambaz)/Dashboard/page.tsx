@@ -1,5 +1,5 @@
 "use client";
-import * as client from "../Courses/client";
+import * as client from "../Courses/[cid]/client";
 import { useDispatch, useSelector } from "react-redux";
 import { setCourses } from "../Courses/reducer";
 import { v4 as uuidv4 } from "uuid";

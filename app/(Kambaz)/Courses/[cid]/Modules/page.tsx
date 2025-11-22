@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect} from "react";
 import { useParams } from "next/navigation";
-import * as coursesClient from "../../client";
+import * as coursesClient from "../client";
 //import * as modulesClient from "./client";
 import { ListGroup, ListGroupItem, FormControl } from "react-bootstrap";
 import ModulesControls from "./ModulesControls";

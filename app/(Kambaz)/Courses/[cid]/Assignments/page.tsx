@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setAssignments, deleteAssignment } from "./reducer";  // ✅ ADD setAssignments
 import { useRouter, useParams } from "next/navigation";
 import { useEffect } from "react";  // ✅ ADD useEffect
-import * as coursesClient from "../../client";  // ✅ ADD client
+import * as coursesClient from "../client";  // ✅ ADD client
 import Link from "next/link";
 import {
   InputGroup,

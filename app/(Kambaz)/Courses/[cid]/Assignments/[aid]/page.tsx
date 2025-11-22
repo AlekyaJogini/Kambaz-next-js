@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";  // ✅ ADD useEffect
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import { useParams, useRouter } from "next/navigation";
 import { useSelector } from "react-redux";  // ✅ CHANGE: Remove useDispatch
-import * as coursesClient from "../../../client";  // ✅ ADD client
+import * as coursesClient from "../../client";  // ✅ ADD client
 import { v4 as uuidv4 } from "uuid";
 
 export default function AssignmentEditor() {
