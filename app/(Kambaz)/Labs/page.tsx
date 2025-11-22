@@ -23,8 +23,8 @@ export default function Labs() {
        </li>
 
        <li>
-         <Link href="/Labs/Lab4" id="wd-lab4-link">
-           Lab 5:  Applications </Link>
+         <Link href="/Labs/Lab5" id="wd-lab5-link">
+           Lab 5:  Lab 5 Applications </Link>
        </li>
       
        

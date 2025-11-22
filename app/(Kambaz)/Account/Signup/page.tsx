@@ -14,7 +14,7 @@ export default function Signup() {
   });
   const [error, setError] = useState("");  
   const dispatch = useDispatch();
-  const router = useRouter();  // ✅ ADD THIS
+  const router = useRouter();  
   
   const signup = async () => {
     try {
