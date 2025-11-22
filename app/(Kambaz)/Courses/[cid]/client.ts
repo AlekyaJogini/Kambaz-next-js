@@ -6,15 +6,17 @@ const USERS_API = `${HTTP_SERVER}/api/users`;
 const MODULES_API = `${HTTP_SERVER}/api/modules`;
 const ASSIGNMENTS_API = `${HTTP_SERVER}/api/assignments`;
 
+export const findMyCourses = async () => {
+  const response = await axiosWithCredentials.get(`${HTTP_SERVER}/api/users/current/courses`);
+  return response.data;
+};
+
 export const fetchAllCourses = async () => {
   const { data } = await axiosWithCredentials.get(COURSES_API);
   return data;
 };
 
-export const findMyCourses = async () => {
-  const { data } = await axiosWithCredentials.get(`${USERS_API}/current/courses`);
-  return data;
-};
+
 
 // ✅ ADD: Enroll
 export const enrollInCourse = async (userId: string, courseId: string) => {
