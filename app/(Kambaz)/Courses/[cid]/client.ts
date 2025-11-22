@@ -7,7 +7,7 @@ const MODULES_API = `${HTTP_SERVER}/api/modules`;
 const ASSIGNMENTS_API = `${HTTP_SERVER}/api/assignments`;
 
 export const fetchAllCourses = async () => {
-  const { data } = await axios.get(COURSES_API);
+  const { data } = await axiosWithCredentials.get(COURSES_API);
   return data;
 };
 
@@ -48,7 +48,7 @@ export const updateCourse = async (course: any) => {
 };
 
 export const findModulesForCourse = async (courseId: string) => {
-  const response = await axios.get(`${COURSES_API}/${courseId}/modules`);
+  const response = await axiosWithCredentials.get(`${COURSES_API}/${courseId}/modules`);
   return response.data;
 };
 
@@ -74,7 +74,7 @@ export const updateModule = async (module: any) => {
 };
 
 export const findAssignmentsForCourse = async (courseId: string) => {
-  const response = await axios.get(`${COURSES_API}/${courseId}/assignments`);
+  const response = await axiosWithCredentials.get(`${COURSES_API}/${courseId}/assignments`);
   return response.data;
 };
 
