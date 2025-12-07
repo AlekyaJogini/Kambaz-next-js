@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import PeopleTable from "../../Courses/[cid]/People/Table";
 import { FormControl } from "react-bootstrap";
-import { FaPlus } from "react-icons/fa";  // ✅ ADD THIS IMPORT
+import { FaPlus } from "react-icons/fa";  
 import * as client from "../client";
 
 export default function Users() {

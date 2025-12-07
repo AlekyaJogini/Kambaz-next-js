@@ -39,14 +39,17 @@ export default function Modules() {
   };
 
    const removeModule = async (moduleId: string) => {
-    await coursesClient.deleteModule(moduleId);
-    dispatch(deleteModule(moduleId));  // ✅ Use reducer action to remove from state
+    await coursesClient.deleteModule(cid as string,moduleId);
+   dispatch(setModules(modules.filter((m: any) => m._id !== moduleId))); // ✅ Use reducer action to remove from state
   };
 
-  const saveModule = async (module: any) => {
-    await coursesClient.updateModule(module);
-    dispatch(updateModuleAction(module));
-  };
+  const onUpdateModule = async (module: any) => {
+  await coursesClient.updateModule(cid as string, module);  // ✅ Use coursesClient, add "as string"
+  const newModules = modules.map((m: any) =>  // ✅ Map to update the specific module
+    m._id === module._id ? module : m
+  );
+  dispatch(setModules(newModules));  // ✅ Use setModules instead of updateModuleAction
+};
 
    useEffect(() => {
     fetchModules();
@@ -88,7 +91,7 @@ export default function Modules() {
                       onKeyDown={(e) => {
                         if (e.key === "Enter") {
                           
-                            saveModule({ ...module, editing: false });
+                            onUpdateModule({ ...module, editing: false });
                           
                         }
                       }}
