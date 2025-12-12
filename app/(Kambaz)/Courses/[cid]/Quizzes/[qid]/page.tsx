@@ -56,6 +56,8 @@ export default function QuizDetails() {
               Preview
             </Button>
             <Button 
+
+            
               variant="primary" 
               onClick={() => router.push(`/Courses/${cid}/Quizzes/${qid}/Editor`)}
             >
