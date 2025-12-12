@@ -100,7 +100,14 @@ export default function QuizDetails() {
               <td className="fw-bold">Shuffle Answers</td>
               <td>{quiz.shuffleAnswers ? "Yes" : "No"}</td>
             </tr>
+
             
+            
+            
+
+           
+
+
             <tr>
               <td className="fw-bold">Time Limit</td>
               <td>{quiz.timeLimit || 20} Minutes</td>

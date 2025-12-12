@@ -28,28 +28,32 @@ export default function QuizEditor() {
     return (quiz.questions || []).reduce((sum: number, q: any) => sum + (q.points || 0), 0);
   };
 
-  // Save quiz with calculated points
-  const saveQuiz = async () => {
-    if (!quiz) return;
-    const updatedQuiz = { 
-      ...quiz, 
-      points: calculateTotalPoints()
-    };
-    await client.updateQuiz(updatedQuiz._id, updatedQuiz);
-    router.push(`/Courses/${cid}/Quizzes/${qid}`);
+  // Save quiz with calculated points OR manual input
+const saveQuiz = async () => {
+  if (!quiz) return;
+  const updatedQuiz = { 
+    ...quiz, 
+    points: (quiz.questions && quiz.questions.length > 0) 
+      ? calculateTotalPoints()  // Use calculated if questions exist
+      : (quiz.points || 0)       // Use manual input if no questions
   };
+  await client.updateQuiz(updatedQuiz._id, updatedQuiz);
+  router.push(`/Courses/${cid}/Quizzes/${qid}`);
+};
 
-  // Save and publish with calculated points
-  const saveAndPublish = async () => {
-    if (!quiz) return;
-    const updatedQuiz = { 
-      ...quiz, 
-      points: calculateTotalPoints(),
-      published: true 
-    };
-    await client.updateQuiz(updatedQuiz._id, updatedQuiz);
-    router.push(`/Courses/${cid}/Quizzes`);
+// Save and publish with calculated points OR manual input
+const saveAndPublish = async () => {
+  if (!quiz) return;
+  const updatedQuiz = { 
+    ...quiz, 
+    points: (quiz.questions && quiz.questions.length > 0) 
+      ? calculateTotalPoints()  // Use calculated if questions exist
+      : (quiz.points || 0),      // Use manual input if no questions
+    published: true 
   };
+  await client.updateQuiz(updatedQuiz._id, updatedQuiz);
+  router.push(`/Courses/${cid}/Quizzes`);
+};
 
   const cancel = () => {
     router.push(`/Courses/${cid}/Quizzes`);
@@ -193,18 +197,25 @@ export default function QuizEditor() {
             </FormSelect>
           </Form.Group>
 
-          {/* Points - FIXED: Now shows calculated value */}
-          <Form.Group className="mb-3">
-            <Form.Label>Points</Form.Label>
-            <FormControl
-              type="number"
-              value={calculateTotalPoints()}
-              disabled
-              className="bg-light"
-            />
-            <small className="text-muted">Auto-calculated from total question points</small>
-          </Form.Group>
-
+         {/* Points - Allow Manual Input OR Auto-Calculate from Questions */}
+<Form.Group className="mb-3">
+  <Form.Label>Points</Form.Label>
+  <FormControl
+    type="number"
+    value={quiz.points === undefined || quiz.points === null ? "" : quiz.points}
+    onChange={(e) => {
+      const value = e.target.value;
+      setQuiz({ ...quiz, points: value === "" ? 0 : Number(value) });
+    }}
+    placeholder="0"
+    min="0"
+  />
+  <small className="text-muted">
+    {quiz.questions && quiz.questions.length > 0 
+      ? `Calculated from questions: ${calculateTotalPoints()} pts (will override manual input when saved)`
+      : "Enter points manually"}
+  </small>
+</Form.Group>
           {/* Assignment Group */}
           <Form.Group className="mb-3">
             <Form.Label>Assignment Group</Form.Label>
